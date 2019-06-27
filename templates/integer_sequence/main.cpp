@@ -7,7 +7,8 @@
 template <typename T>
 void function_impl(T&& t)
 {
-	function_impl(std::forward<T>(t), std::is_integral<T>());
+	std::cout << typeid(T).name() << ": " << std::is_integral_v<std::decay<T>::type>  << std::endl;
+	//function_impl(std::forward<T>(t), std::integral_constant<bool, std::is_integral<T>::value>());
 }
 template <typename T>
 void function_impl(T&& t, std::true_type)
